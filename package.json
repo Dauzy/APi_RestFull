@@ -1,0 +1,24 @@
+{
+  "name": "api_rest",
+  "version": "1.0.0",
+  "description": "Proyecto de api restfull, node y express",
+  "main": "index.js",
+  "scripts": {
+    "start": "nodemon index.js",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/Dauzy"
+  },
+  "author": "dvuz",
+  "license": "ISC",
+  "dependencies": {
+    "body-parser": "^1.17.1",
+    "express": "^4.15.2",
+    "mongoose": "^4.9.9"
+  },
+  "devDependencies": {
+    "nodemon": "^1.11.0"
+  }
+}
