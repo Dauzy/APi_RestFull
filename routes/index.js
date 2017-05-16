@@ -3,6 +3,8 @@
 const express = require('express')
 const productCtrl = require('../controllers/product')
 const api = express.Router()
+const userCtrl = require('../controllers/user')
+const auth = require('../middlewares/auth')
 
 
 //Peticiones a APIREST (MIDDLEWARE)
@@ -18,11 +20,16 @@ app.get('/hola/:name', (req, res) => {
 });
 */
 
-api.get('/product', productCtrl.getProducts)
+api.get('/product', auth,productCtrl.getProducts)
 api.get('/product/:productId', productCtrl.getProduct)
-api.post('/product', productCtrl.saveProduct)
-api.put('/product/:productId', productCtrl.updateProduct)
-api.delete('/product/:productId', productCtrl.deleteProduct)
+api.post('/product', auth, productCtrl.saveProduct)
+api.put('/product/:productId', auth, productCtrl.updateProduct)
+api.delete('/product/:productId', auth, productCtrl.deleteProduct)
+api.post('/signup', userCtrl.signUp)
+api.post('/signin', userCtrl.signIn)
+api.get('/private', auth, function(req,res){
+  res.status(200).send({message: 'You are in!'})
+})
 
 
 module.exports = api
